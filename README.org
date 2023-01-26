@@ -1,0 +1,24 @@
+* 功能
+基于预构建模型, 实现离线翻译 =中 <-> 英文=.
+通过 =grpc= 调用  =transformers= 加载预训练模型 [[https://huggingface.co/Helsinki-NLP/opus-mt-zh-en/tree/main][opus-mt-zh-en]]  [[https://huggingface.co/Helsinki-NLP/opus-mt-en-zh/tree/main][opus-mt-en-zh]] .
+
+* 依赖包
+=archlinux= 下需要以下包
+- python-transformers
+- python-sentencepiece-git (aur)
+- python-pytorch
+构建依赖:
+- python-grpcio
+- python-grpcio-tools
+
+* 构建
+由于使用 =grpc= 需要同步修改 =proto=,执行下列命令简化操作:
+#+begin_src shell :tangle no :shebang #!/bin/bash
+  sh make_proto.sh
+#+end_src
+
+* 使用
+#+begin_src shell :tangle no :shebang #!/bin/bash
+  python trans_rpc_server.py #启动
+  python trans_rpc_client.py -l en -s "test string" #翻译 en - zh 翻译中文 -l zh
+#+end_src
