@@ -26,6 +26,8 @@ service Trans {
   // Sends a greeting
   rpc SayHello (RpcRequest) returns (RpcReply) {}
   rpc SayHello2 (RpcRequest) returns (RpcReply) {}
+  rpc TransZh (RpcRequest) returns (RpcReply) {}
+  rpc TransEn (RpcRequest) returns (RpcReply) {}
 }
 
 // The request message containing the user's name.
