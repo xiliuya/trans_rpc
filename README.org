@@ -1,3 +1,7 @@
+TITLE: TRANS_RPC
+#+AUTHOR: [[https://xiliuya.github.io/][xiliuya]]
+#+EMAIL: xiliuya@163.com
+#+LANGUAGE: zh-CN
 * 功能
 基于预构建模型, 实现离线翻译 =中 <-> 英文=.
 通过 =grpc= 调用  =transformers= 加载预训练模型 [[https://huggingface.co/Helsinki-NLP/opus-mt-zh-en/tree/main][opus-mt-zh-en]]  [[https://huggingface.co/Helsinki-NLP/opus-mt-en-zh/tree/main][opus-mt-en-zh]] .

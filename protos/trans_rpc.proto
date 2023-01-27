@@ -24,18 +24,14 @@ package transrpc;
 // The greeting service definition.
 service Trans {
   // Sends a greeting
-  rpc SayHello (RpcRequest) returns (RpcReply) {}
-  rpc SayHello2 (RpcRequest) returns (RpcReply) {}
-  rpc TransZh (RpcRequest) returns (RpcReply) {}
-  rpc TransEn (RpcRequest) returns (RpcReply) {}
+  rpc SayHello(RpcRequest) returns (RpcReply) {}
+  rpc SayHello2(RpcRequest) returns (RpcReply) {}
+  rpc TransZh(RpcRequest) returns (RpcReply) {}
+  rpc TransEn(RpcRequest) returns (RpcReply) {}
 }
 
 // The request message containing the user's name.
-message RpcRequest {
-  string name = 1;
-}
+message RpcRequest { string name = 1; }
 
 // The response message containing the greetings
-message RpcReply {
-  string message = 1;
-}
+message RpcReply { string message = 1; }

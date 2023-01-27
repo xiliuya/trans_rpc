@@ -43,7 +43,7 @@ def trans_str(model, tokenizer, text):
 class Trans(trans_rpc_pb2_grpc.TransServicer):
 
     model_zh_en, token_zh_en = model_load("zh", "en")
-    model_en_zh, token_en_zh = model_load( "en", "zh")
+    model_en_zh, token_en_zh = model_load("en", "zh")
 
     def SayHello(self, request, context):
         return trans_rpc_pb2.RpcReply(message='Hello, %s!' % request.name)
@@ -58,6 +58,7 @@ class Trans(trans_rpc_pb2_grpc.TransServicer):
     def TransEn(self, request, context):
         message1 = trans_str(self.model_en_zh, self.token_en_zh, request.name)
         return trans_rpc_pb2.RpcReply(message=message1)
+
 
 def serve():
     port = '50051'
