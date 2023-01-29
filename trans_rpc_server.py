@@ -26,6 +26,8 @@ warnings.filterwarnings("ignore")
 
 from transformers import AutoTokenizer, MarianMTModel
 
+import ljspeech
+
 
 def model_load(src, trg):
     model_name = f"../opus-mt-{src}-{trg}"
@@ -44,6 +46,7 @@ class Trans(trans_rpc_pb2_grpc.TransServicer):
 
     model_zh_en, token_zh_en = model_load("zh", "en")
     model_en_zh, token_en_zh = model_load("en", "zh")
+    tacotron2_tts_en, hifi_gan_tts_en = ljspeech.ljspeech_load()
 
     def SayHello(self, request, context):
         return trans_rpc_pb2.RpcReply(message='Hello, %s!' % request.name)
@@ -59,6 +62,9 @@ class Trans(trans_rpc_pb2_grpc.TransServicer):
         message1 = trans_str(self.model_en_zh, self.token_en_zh, request.name)
         return trans_rpc_pb2.RpcReply(message=message1)
 
+    def TtsEn(self, request, context):
+        ljspeech.ljspeech_tts(self.tacotron2_tts_en, self.hifi_gan_tts_en, request.name)
+        return trans_rpc_pb2.RpcReply(message="message")
 
 def serve():
     port = '50051'

@@ -56,14 +56,23 @@ def trans_en_str(string_get):
         response = stub.TransEn(trans_rpc_pb2.RpcRequest(name=string_get))
         return response.message
 
+def tts_en_str(string_get):
+    with grpc.insecure_channel('localhost:50051') as channel:
+        stub = trans_rpc_pb2_grpc.TransStub(channel)
+        response = stub.TtsEn(trans_rpc_pb2.RpcRequest(name=string_get))
+        return response.message
+
 if __name__ == '__main__':
     logging.basicConfig()
     parser = argparse.ArgumentParser()
     parser.add_argument('-s', '--string', help="trans string")
     parser.add_argument('-l', '--language', help="chose lang zh/en")
+    parser.add_argument('-t', '--tts', help="chose tts lang zh/en")
     args = parser.parse_args()
     if args.language == "zh" and args.string:
         print(trans_zh_str(args.string))
     if args.language == "en" and args.string:
         print(trans_en_str(args.string))
-    #run()
+
+    if args.tts == "en" and args.string:
+        print(tts_en_str(args.string))
