@@ -1,9 +1,18 @@
 ;;; trans-rpc.el --- Translation zh and en  -*- lexical-binding:t; -*-
 
-;; Copyright (C) 2014 xiliuya
+;; Copyright (C) 2023 xiliuya
 
 ;; Author: xiliuya <xiliuya@aliyun.com>
-;; Version: 0.1
+;; Maintainer: xiliuya <xiliuya@aliyun.com>
+;; URL: https://github.com/xiliuya/trans_rpc
+;; Created: 2023-01-30 19:30:18
+
+;; Keywords: extensions
+;; Version: 0.0.1
+;; Package-Requires: ((emacs "25.1"))
+
+;; This file is part of GNU Emacs.
+
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -18,8 +27,8 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;; Package-Requires: ((emacs "27.1") (eldoc "1.3") )
-;;; Commentary: trans fram python rpc https://xiliuya.github.i
+;;; Commentary:
+;; trans fram python rpc with openai.
 
 ;;; Code:
 
@@ -60,12 +69,14 @@ TRANS-STR: STRING"
 (defun trans-rpc-form-point-en ()
   (interactive)
   (setq trans-string  (thing-at-point 'sentence t))
+  (if (null trans-string)
+      (setq trans-string  (thing-at-point 'line t)))
   (if (not (null trans-string))
       (progn
         (trans-rpc-trans "en"
-                         (replace-regexp-in-string "[\n-]" "" trans-string))
+                         (replace-regexp-in-string "[\n-=]" "" trans-string))
         (trans-rpc-tts "en"
-                       (replace-regexp-in-string "[\n-]" "" trans-string))
+                       (replace-regexp-in-string "[\n-=]" "" trans-string))
         )
     (message "Null input")
     ))
@@ -73,6 +84,8 @@ TRANS-STR: STRING"
 (defun trans-rpc-form-point-zh ()
   (interactive)
   (setq trans-string  (thing-at-point 'sentence t))
+  (if (null trans-string)
+      (setq trans-string  (thing-at-point 'line t)))
   (if (not (null trans-string))
       (trans-rpc-trans "zh" trans-string)
     (message "Null input")
