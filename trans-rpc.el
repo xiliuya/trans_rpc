@@ -1,35 +1,50 @@
 ;;; trans-rpc.el --- Translation zh and en  -*- lexical-binding:t; -*-
-
 ;; Copyright (C) 2023 xiliuya
-
-;; Author: xiliuya <xiliuya@aliyun.com>
+;; Filename: trans-rpc.el
+;; Description: Translation zh and en with openai.
+;; Author: xiliuya
 ;; Maintainer: xiliuya <xiliuya@aliyun.com>
-;; URL: https://github.com/xiliuya/trans_rpc
-;; Created: 2023-01-30 19:30:18
-
-;; Keywords: extensions
+;; Created: Mon Jan 30 21:06:08 2023 (+0800)
 ;; Version: 0.0.1
 ;; Package-Requires: ((emacs "25.1"))
-
-;; This file is part of GNU Emacs.
-
-
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+;; Last-Updated:
+;;           By:
+;;     Update #: 5
+;; URL:  https://github.com/xiliuya/trans_rpc
+;; Doc URL:
+;; Keywords: extensions Trans
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;;; Commentary:
 ;; trans fram python rpc with openai.
-
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;; 30-Jan-2023    xiliuya
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;;; Code:
 
 (defun trans-rpc-keep-output (process output)
@@ -91,5 +106,6 @@ TRANS-STR: STRING"
     (message "Null input")
     ))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (provide 'trans-rpc)
 ;;; trans-rpc.el ends here
