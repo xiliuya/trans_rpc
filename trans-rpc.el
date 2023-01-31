@@ -8,7 +8,7 @@
 ;; Version: 0.0.1
 ;; Package-Requires: ((emacs "25.1"))
 ;; Last-Updated:
-;;           By:
+;;           By: xiliuya
 ;;     Update #: 5
 ;; URL:  https://github.com/xiliuya/trans_rpc
 ;; Doc URL:
@@ -25,7 +25,7 @@
 ;;
 ;;; Change Log:
 ;; 30-Jan-2023    xiliuya
-;;
+;;    add tts
 ;;
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -90,8 +90,8 @@ TRANS-STR: STRING"
       (progn
         (trans-rpc-trans "en"
                          (replace-regexp-in-string "[\n-=]" "" trans-string))
-        (trans-rpc-tts "en"
-                       (replace-regexp-in-string "[\n-=]" "" trans-string))
+        ;; (trans-rpc-tts "en"
+        ;;                (replace-regexp-in-string "[\n-=]" "" trans-string))
         )
     (message "Null input")
     ))

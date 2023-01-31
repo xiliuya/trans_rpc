@@ -31,8 +31,10 @@ def ljspeech_load():
     return tacotron2, hifi_gan
 
 
-def ljspeech_tts(tacotron2,hifi_gan,text_string):
+def ljspeech_tts(tacotron2, hifi_gan, text_string):
     mel_output, mel_length, alignment = tacotron2.encode_text(text_string)
     waveforms = hifi_gan.decode_batch(mel_output)
     play_obj = simpleaudio.play_buffer(waveforms.numpy(), 1, 4, 22050)
     play_obj.wait_done()
+    del mel_output, mel_length, alignment, waveforms, play_obj
+    return
