@@ -30,7 +30,7 @@ import ljspeech
 
 
 def model_load(src, trg):
-    model_name = f"../opus-mt-{src}-{trg}"
+    model_name = f"./opus-mt-{src}-{trg}"
     model = MarianMTModel.from_pretrained(model_name)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     return model, tokenizer
@@ -46,6 +46,7 @@ class Trans(trans_rpc_pb2_grpc.TransServicer):
 
     model_zh_en, token_zh_en = model_load("zh", "en")
     model_en_zh, token_en_zh = model_load("en", "zh")
+
     # tts need some mem .
     #tacotron2_tts_en, hifi_gan_tts_en = ljspeech.ljspeech_load()
 
@@ -64,8 +65,10 @@ class Trans(trans_rpc_pb2_grpc.TransServicer):
         return trans_rpc_pb2.RpcReply(message=message1)
 
     def TtsEn(self, request, context):
-        ljspeech.ljspeech_tts(self.tacotron2_tts_en, self.hifi_gan_tts_en, request.name)
+        ljspeech.ljspeech_tts(self.tacotron2_tts_en, self.hifi_gan_tts_en,
+                              request.name)
         return trans_rpc_pb2.RpcReply(message="message")
+
 
 def serve():
     port = '50051'
